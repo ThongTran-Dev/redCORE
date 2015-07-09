@@ -12,7 +12,7 @@ INSERT INTO `#__redcore_oauth_scopes` (`scope`) VALUES
   ('administrator.documentation'),
   ('administrator.task');
 
--- Add redCORE push relation
-ALTER TABLE `#__redcore_push_notification` ADD CONSTRAINT `push_user_relation`
+-- Add redCORE device tokens relation
+ALTER TABLE `#__redcore_device_tokens` ADD CONSTRAINT `device_token_user_relation`
       FOREIGN KEY (`user_id`)
       REFERENCES `#__users`(`id`) ON DELETE CASCADE ON UPDATE NO ACTION;

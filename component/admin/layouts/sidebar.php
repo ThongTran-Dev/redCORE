@@ -101,6 +101,18 @@ if (empty($return))
 		</li>
 	<?php endif; ?>
 
+	<?php if ($view === 'device_tokens'): ?>
+		<li class="nav-header"><?php echo JText::_('COM_REDCORE_DEVICE_TOKENS') ?></li>
+		<li class="divider"></li>
+	<?php else: ?>
+		<li>
+			<a href="<?php echo JRoute::_('index.php?option=com_redcore&view=device_tokens') ?>">
+				<i class="icon-mobile"></i>
+				<?php echo JText::_('COM_REDCORE_DEVICE_TOKENS') ?>
+			</a>
+		</li>
+	<?php endif; ?>
+
 	<?php if ($view === 'payments'): ?>
 		<li class="nav-header"><?php echo JText::_('COM_REDCORE_PAYMENTS') ?></li>
 		<li class="divider"></li>

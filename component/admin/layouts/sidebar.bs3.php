@@ -108,6 +108,16 @@ if (empty($return))
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<h4 class="panel-title">
+				<a href="<?php echo JRoute::_('index.php?option=com_redcore&view=device_tokens') ?>">
+					<i class="icon-mobile"></i>
+					<?php echo JText::_('COM_REDCORE_DEVICE_TOKENS') ?>
+				</a>
+			</h4>
+		</div>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h4 class="panel-title">
 				<a
 					data-toggle="collapse"
 					data-parent="#rc-sidebar-accordion"

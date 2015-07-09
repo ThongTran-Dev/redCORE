@@ -10,13 +10,13 @@
 defined('_JEXEC') or die;
 
 /**
- * Push notification table.
+ * Device token table.
  *
  * @package     Redcore.Backend
  * @subpackage  Tables
  * @since       1.5
  */
-class RedcoreTablePush_Notification extends RTable
+class RedcoreTableDevice_Token extends RTable
 {
 	/**
 	 * @var  int
@@ -39,6 +39,41 @@ class RedcoreTablePush_Notification extends RTable
 	public $token;
 
 	/**
+	 * @var int
+	 */
+	public $state;
+
+	/**
+	 * @var  string
+	 */
+	public $created_date = '0000-00-00 00:00:00';
+
+	/**
+	 * @var  integer
+	 */
+	public $created_by = null;
+
+	/**
+	 * @var  string
+	 */
+	public $modified_date = '0000-00-00 00:00:00';
+
+	/**
+	 * @var  integer
+	 */
+	public $modified_by = null;
+
+	/**
+	 * @var  string
+	 */
+	public $checked_out_time = '0000-00-00 00:00:00';
+
+	/**
+	 * @var  integer
+	 */
+	public $checked_out = null;
+
+	/**
 	 * Constructor
 	 *
 	 * @param   JDatabase  &$db  A database connector object
@@ -47,7 +82,7 @@ class RedcoreTablePush_Notification extends RTable
 	 */
 	public function __construct(&$db)
 	{
-		$this->_tableName = 'redcore_push_notification';
+		$this->_tableName = 'redcore_device_tokens';
 		$this->_tbl_key = 'id';
 
 		parent::__construct($db);

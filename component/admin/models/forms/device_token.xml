@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset addfieldpath="/libraries/redcore/form/fields">
+        <field
+            name="id"
+            type="hidden"
+            default="0"
+            label="COM_REDCORE_ID_LABEL"
+            description="COM_REDCORE_ID_DESC"
+            readonly="true"
+            />
+        <field
+                name="device"
+                type="radio"
+                label="COM_REDCORE_DEVICE_TOKENS_DEVICE_LABEL"
+                description="COM_REDCORE_DEVICE_TOKENS_DEVICE_DESC"
+                class="btn-group"
+                required="true"
+                default="android">
+                <option value="android">COM_REDCORE_DEVICE_TOKENS_DEVICE_OPTION_ANDROID</option>
+                <option value="ios">COM_REDCORE_DEVICE_TOKENS_DEVICE_OPTION_IOS</option>
+        </field>
+        <field
+                name="token"
+                type="text"
+                label="COM_REDCORE_DEVICE_TOKENS_TOKEN_LABEL"
+                description="COM_REDCORE_DEVICE_TOKENS_TOKEN_DESC"
+                required="true"
+                />
+        <field
+            name="user_id"
+            type="userbs3"
+            label="COM_REDCORE_DEVICE_TOKENS_USER_LABEL"
+            description="COM_REDCORE_DEVICE_TOKENS_USER_DESC">
+        </field>
+        <field
+                name="state"
+                type="radio"
+                label="JSTATUS"
+                description="JFIELD_PUBLISHED_DESC"
+                class="btn-group"
+                default="1">
+            <option value="1">JPUBLISHED</option>
+            <option value="0">JUNPUBLISHED</option>
+        </field>
+    </fieldset>
+</form>

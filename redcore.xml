@@ -66,7 +66,7 @@
             <menu link="option=com_redcore&amp;view=webservices" view="webservices">COM_REDCORE_WEBSERVICES</menu>
             <menu link="option=com_redcore&amp;view=oauth_clients" view="oauth_clients">COM_REDCORE_OAUTH_CLIENTS</menu>
             <menu link="option=com_redcore&amp;view=payment_dashboard" view="payment_dashboard">COM_REDCORE_PAYMENTS</menu>
-            <menu link="option=com_redcore&amp;view=push_notifications" view="pushs">COM_REDCORE_PUSH_NOTIFICATIONS</menu>
+            <menu link="option=com_redcore&amp;view=device_tokens" view="pushs">COM_REDCORE_DEVICE_TOKENS</menu>
         </submenu>
     </administration>
 
