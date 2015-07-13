@@ -8,6 +8,18 @@
                 placeholder="JSEARCH_FILTER"
                 class="js-enter-submits"
                 />
+        <field
+                name="filter_type"
+                type="list"
+                label="COM_REDCORE_DEVICE_TOKENS_FILTER_TYPE"
+                class="inputbox"
+                default=""
+                onchange="this.form.submit();"
+                >
+            <option value="">COM_REDCORE_DEVICE_TOKENS_FILTER_TYPE_OPTION_SELECT</option>
+            <option value="android">COM_REDCORE_DEVICE_TOKENS_DEVICE_OPTION_ANDROID</option>
+            <option value="ios">COM_REDCORE_DEVICE_TOKENS_DEVICE_OPTION_IOS</option>
+        </field>
     </fields>
     <fields name="list">
         <field

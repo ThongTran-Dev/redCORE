@@ -60,6 +60,23 @@ class RedcoreModelDevice_Tokens extends RModelList
 			->from($db->qn('#__redcore_device_tokens', 'd'))
 			->leftJoin($db->qn('#__users', 'u') . ' ON ' . $db->qn('d.user_id') . ' = ' . $db->qn('u.id'));
 
+		// Filter search
+		$search = $this->getState('filter.search_device_tokens');
+
+		if (!empty($search))
+		{
+			$search = $db->quote('%' . $db->escape($search, true) . '%');
+			$query->where('(' . $db->qn('d.token') . ' LIKE ' . $search . ')');
+		}
+
+		// Filter by Device Type
+		$type = $this->getState('filter.filter_type');
+
+		if (!empty($type))
+		{
+			$query->where($db->qn('d.device') . ' = ' . $db->quote($type));
+		}
+
 		// Ordering
 		$orderList = $this->getState('list.ordering');
 		$directionList = $this->getState('list.direction');
@@ -67,6 +84,8 @@ class RedcoreModelDevice_Tokens extends RModelList
 		$order = !empty($orderList) ? $orderList : 'd.id';
 		$direction = !empty($directionList) ? $directionList : 'ASC';
 		$query->order($db->escape($order) . ' ' . $db->escape($direction));
+
+		echo $query->dump();
 
 		return $query;
 	}
