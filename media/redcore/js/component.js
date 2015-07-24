@@ -27,6 +27,9 @@
 			"html":true
 		});
 
+        $('input[type="checkbox"]').radiocheck();
+        $('input[type="radio"]').radiocheck();
+
         rRadioGroupButtonsSet();
         rRadioGroupButtonsEvent();
 
