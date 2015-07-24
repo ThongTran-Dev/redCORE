@@ -114,6 +114,8 @@ abstract class RHtmlMedia
 			}
 			elseif (self::getFramework() == 'bootstrap3')
 			{
+				// RHelperAsset::load('lib/bootstrap3/css/bootstrap.min.css', 'redcore');
+				// RHelperAsset::load('lib/bootstrap3/css/bootflat.min.css', 'redcore');
 				RHelperAsset::load('component.bs3.min.css', 'redcore');
 			}
 			elseif (self::getFramework() == 'foundation5')
@@ -149,6 +151,7 @@ abstract class RHtmlMedia
 			elseif (self::getFramework() == 'bootstrap3')
 			{
 				RHelperAsset::load('lib/bootstrap3/bootstrap.min.js', 'redcore');
+				RHelperAsset::load('lib/bootstrap3/bootflat/bootflat.min.js', 'redcore');
 			}
 			elseif (self::getFramework() == 'foundation5')
 			{
