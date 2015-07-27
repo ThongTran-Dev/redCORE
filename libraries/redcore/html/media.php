@@ -114,7 +114,8 @@ abstract class RHtmlMedia
 			}
 			elseif (self::getFramework() == 'bootstrap3')
 			{
-				RHelperAsset::load('component.bs3.min.css', 'redcore');
+				// RHelperAsset::load('component.bs3.min.css', 'redcore');
+				RHelperAsset::load('component-sbadmin2.min.css', 'redcore');
 			}
 			elseif (self::getFramework() == 'foundation5')
 			{
