@@ -410,12 +410,25 @@ class RApiHalHal extends RApi
 			// If we are not in debug mode we will take out everything except errors
 			if (RBootstrap::getConfig('debug_webservices', 0) == 0)
 			{
+				$warnings = array();
+
 				foreach ($messages as $key => $message)
 				{
+					if ($message['type'] == 'warning')
+					{
+						$warnings[] = $message;
+					}
+
 					if ($message['type'] != 'error')
 					{
 						unset($messages[$key]);
 					}
+				}
+
+				// Showing 'warning' messages only if no 'error' are present
+				if (!count($messages))
+				{
+					$messages = $warnings;
 				}
 			}
 
@@ -615,13 +628,16 @@ class RApiHalHal extends RApi
 			}
 		}
 
-		// Checking if primary keys are found
-		foreach ($primaryKeys as $primaryKey => $primaryKeyValue)
+		if (RApiHalHelper::isAttributeTrue($currentConfiguration, 'enforcePKs', true))
 		{
-			if (property_exists($itemObject, $primaryKey) && $itemObject->{$primaryKey} != $primaryKeyValue)
+			// Checking if primary keys are found
+			foreach ($primaryKeys as $primaryKey => $primaryKeyValue)
 			{
-				$itemObject = null;
-				break;
+				if (property_exists($itemObject, $primaryKey) && $itemObject->{$primaryKey} != $primaryKeyValue)
+				{
+					$itemObject = null;
+					break;
+				}
 			}
 		}
 
@@ -651,8 +667,7 @@ class RApiHalHal extends RApi
 		if ($data === false)
 		{
 			// Not Acceptable
-			$customError = $this->triggerFunction('createCustomHttpError', 406, $this->apiErrors);
-			$this->setStatusCode(406, $customError);
+			$this->setStatusCode(406);
 			$this->triggerFunction('displayErrors', $model);
 			$this->setData('result', $data);
 
@@ -1330,7 +1345,8 @@ class RApiHalHal extends RApi
 			{
 				$fieldAttributes = RApiHalHelper::getXMLElementAttributes($field);
 				$fieldAttributes['transform'] = !is_null($fieldAttributes['transform']) ? $fieldAttributes['transform'] : 'string';
-				$fieldAttributes['defaultValue'] = !is_null($fieldAttributes['defaultValue']) ? $fieldAttributes['defaultValue'] : '';
+				$fieldAttributes['defaultValue'] = !is_null($fieldAttributes['defaultValue'])
+					&& !RApiHalHelper::isAttributeTrue($fieldAttributes, 'isPrimaryField') ? $fieldAttributes['defaultValue'] : '';
 
 				if (!isset($data[$fieldAttributes['name']]) || is_null($data[$fieldAttributes['name']]))
 				{
@@ -1450,7 +1466,7 @@ class RApiHalHal extends RApi
 			{
 				if (RApiHalHelper::isAttributeTrue($field, 'isRequiredField'))
 				{
-					if (is_null($data[(string) $field['name']]) || $data[(string) $field['name']] == '')
+					if (is_null($data[(string) $field['name']]) || $data[(string) $field['name']] === '')
 					{
 						JFactory::getApplication()->enqueueMessage(
 						JText::sprintf('LIB_REDCORE_API_HAL_WEBSERVICE_ERROR_REQUIRED_FIELD', (string) $field['name']), 'error'
@@ -2027,11 +2043,11 @@ class RApiHalHal extends RApi
 			{
 				if ($errors[$i] instanceof Exception)
 				{
-					$app->enqueueMessage($errors[$i]->getMessage(), 'warning');
+					$app->enqueueMessage($errors[$i]->getMessage(), 'error');
 				}
 				else
 				{
-					$app->enqueueMessage($errors[$i], 'warning');
+					$app->enqueueMessage($errors[$i], 'error');
 				}
 			}
 		}
