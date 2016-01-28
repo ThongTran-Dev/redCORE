@@ -19,7 +19,11 @@ RLoader::registerPrefix('Redcore', dirname(__FILE__));
 
 $app = JFactory::getApplication();
 
-RHtmlMedia::setFramework('bootstrap3');
+$redcorePlugin = JPluginHelper::getPlugin('system', 'redcore');
+$redcoreParams = new JRegistry($redcorePlugin->params);
+$theme = $redcoreParams->get('theme', '');
+
+RHtmlMedia::setFramework($theme);
 
 // Check access.
 if (!JFactory::getUser()->authorise('core.manage', 'com_redcore'))

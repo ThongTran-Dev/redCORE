@@ -76,6 +76,13 @@ abstract class RHtmlMedia
 				'disableMootools' => false,
 			);
 		}
+		elseif ($framework == 'adminlte')
+		{
+			self::$frameworkSuffix = 'adminlte';
+			self::$frameworkOptions = array(
+				'disableMootools' => false,
+			);
+		}
 		else
 		{
 			self::$frameworkSuffix = '';
@@ -116,6 +123,10 @@ abstract class RHtmlMedia
 			{
 				RHelperAsset::load('component.bs3.min.css', 'redcore');
 			}
+			elseif (self::getFramework() == 'adminlte')
+			{
+				RHelperAsset::load('component.adminlte.min.css', 'redcore');
+			}
 			elseif (self::getFramework() == 'foundation5')
 			{
 			}
@@ -149,6 +160,10 @@ abstract class RHtmlMedia
 			elseif (self::getFramework() == 'bootstrap3')
 			{
 				RHelperAsset::load('lib/bootstrap3/js/bootstrap.min.js', 'redcore');
+			}
+			elseif (self::getFramework() == 'adminlte')
+			{
+				RHelperAsset::load('lib/adminlte/js/component.min.js', 'redcore');
 			}
 			elseif (self::getFramework() == 'foundation5')
 			{

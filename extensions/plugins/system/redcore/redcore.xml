@@ -393,6 +393,17 @@
                     <option value="0">JNO</option>
                 </field>
             </fieldset>
+            <fieldset name="PLG_SYSTEM_REDCORE_THEME_OPTIONS">
+                <field
+                        name="theme"
+                        type="list"
+                        default=""
+                        label="PLG_SYSTEM_REDCORE_THEME_LABEL"
+                        description="PLG_SYSTEM_REDCORE_THEME_DESC">
+                    <option value="">PLG_SYSTEM_REDCORE_THEME_OPTION_DEFAULT</option>
+                    <option value="adminlte">PLG_SYSTEM_REDCORE_THEME_OPTION_ADMINLTE</option>
+                </field>
+            </fieldset>
         </fields>
     </config>
 </extension>
