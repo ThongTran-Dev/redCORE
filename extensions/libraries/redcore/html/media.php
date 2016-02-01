@@ -69,6 +69,13 @@ abstract class RHtmlMedia
 				'disableMootools' => true,
 			);
 		}
+		elseif ($framework == 'bootstrap4')
+		{
+			self::$frameworkSuffix = 'bs4';
+			self::$frameworkOptions = array(
+				'disableMootools' => true,
+			);
+		}
 		elseif ($framework == 'foundation5')
 		{
 			self::$frameworkSuffix = 'fd5';
@@ -116,6 +123,11 @@ abstract class RHtmlMedia
 			{
 				RHelperAsset::load('component.bs3.min.css', 'redcore');
 			}
+			elseif (self::getFramework() == 'bootstrap4')
+			{
+				RHelperAsset::load('lib/bootstrap4/css/bootstrap.min.css', 'redcore');
+				RHelperAsset::load('lib/fontawesome4/css/font-awesome.min.css', 'redcore');
+			}
 			elseif (self::getFramework() == 'foundation5')
 			{
 			}
@@ -149,6 +161,10 @@ abstract class RHtmlMedia
 			elseif (self::getFramework() == 'bootstrap3')
 			{
 				RHelperAsset::load('lib/bootstrap3/js/bootstrap.min.js', 'redcore');
+			}
+			elseif (self::getFramework() == 'bootstrap4')
+			{
+				RHelperAsset::load('lib/bootstrap4/js/bootstrap.min.js', 'redcore');
 			}
 			elseif (self::getFramework() == 'foundation5')
 			{
