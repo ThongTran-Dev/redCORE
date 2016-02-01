@@ -205,31 +205,29 @@ else : ?>
 		<?php echo RLayoutHelper::render($topbarLayout, $topbarData) ?>
 	<?php endif; ?>
 	<div class="container-fluid">
-		<div class="">
-			<div class="row">
-				<?php if ($displaySidebar) : ?>
-					<div class="col-md-2 col-sm-3 sidebar">
-						<?php echo RLayoutHelper::render($sidebarLayout, $sidebarData) ?>
+		<div class="row">
+			<?php if ($displaySidebar) : ?>
+			<div class="col-md-2 col-sm-3 sidebar">
+				<?php echo RLayoutHelper::render($sidebarLayout, $sidebarData) ?>
+			</div>
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 content">
+			<?php else : ?>
+			<div class="col-md-12 content">
+			<?php endif; ?>
+				<section id="component">
+					<div class="container-fluid">
+						<h1><?php echo $view->getTitle() ?></h1>
 					</div>
-					<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 content">
-				<?php else : ?>
-					<div class="col-md-12 content">
-				<?php endif; ?>
-						<section id="component">
-							<div class="row">
-								<h1><?php echo $view->getTitle() ?></h1>
-							</div>
-							<?php if ($toolbar instanceof RToolbar) : ?>
-								<div class="row">
-									<?php echo $toolbar->render() ?>
-								</div>
-							<?php endif; ?>
-							<div class="row message-sys"></div>
-							<div class="container-fluid">
-								<?php echo $result ?>
-							</div>
-						</section>
+					<?php if ($toolbar instanceof RToolbar) : ?>
+						<div class="container-fluid">
+							<?php echo $toolbar->render() ?>
+						</div>
+					<?php endif; ?>
+					<div class="container-fluid message-sys"></div>
+					<div class="container-fluid">
+						<?php echo $result ?>
 					</div>
+				</section>
 			</div>
 		</div>
 		<nav class="navbar-fixed-bottom navbar navbar-dark bg-faded text-center">

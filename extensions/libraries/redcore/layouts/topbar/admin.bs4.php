@@ -114,6 +114,8 @@ else
 ?>
 <script type="text/javascript">
 	jQuery(document).ready(function () {
+		jQuery('[data-toggle="tooltip"]').tooltip();
+
 		setInterval(function () {
 			updateDateTime();
 		}, 1000);
@@ -125,56 +127,39 @@ else
 	}
 </script>
 <nav class="navbar navbar-fixed-top bg-inverse navbar-dark">
-	<div class="container-fluid">
-		<a class="navbar-brand" href="<?php echo $componentUri ?>">
-			<?php echo $componentTitle ?>
-			<small class="text text-danger"><?php echo $version ?></small>
-		</a>
-		<?php if ($displayJoomlaMenu || $displayTopbarInnerLayout) : ?>
-			<div class="navbar-right navbar-collapse hidden-xs hidden-sm">
-				<?php if ($displayJoomlaMenu) : ?>
-					<?php foreach ($modules as $module): ?>
-						<?php echo JModuleHelper::renderModule($module, array('style' => 'standard')); ?>
-					<?php endforeach; ?>
-				<?php endif; ?>
-				<?php if ($displayTopbarInnerLayout) : ?>
-					<?php echo RLayoutHelper::render($topbarInnerLayout, $topbarInnerLayoutData) ?>
-				<?php endif; ?>
-			</div>
-		<?php endif; ?>
-		<ul class="nav navbar-nav navbar-right navbar-inverse pull-xs-right">
-			<?php if ($displayBackToJoomla) : ?>
-			<li class="nav-item">
-				<a class="nav-link" href="<?php echo JRoute::_('index.php') ?>">
-					<div class="row text-center">
-						<i class="icon icon-joomla"></i>
-					</div>
-					<div class="row">
-						Joomla
-					</div>
-				</a>
-			</li>
+	<a class="navbar-brand" href="<?php echo $componentUri ?>">
+		<?php echo $componentTitle ?>
+		<small class="text text-danger"><?php echo $version ?></small>
+	</a>
+	<?php if ($displayJoomlaMenu || $displayTopbarInnerLayout) : ?>
+		<div class="nav navbar-nav pull-xs-left">
+			<?php if ($displayJoomlaMenu) : ?>
+				<?php foreach ($modules as $module): ?>
+					<?php echo JModuleHelper::renderModule($module, array('style' => 'standard')); ?>
+				<?php endforeach; ?>
 			<?php endif; ?>
-			<li class="nav-item">
-				<a href="index.php?option=com_admin&amp;task=profile.edit&amp;id=<?php echo $userId; ?>" class="nav-link">
-					<div class="row text-center">
-						<span class="icon icon-user"></span>
-					</div>
-					<div class="row">
-						<?php echo $userName ?>
-					</div>
-				</a>
-			</li>
-			<li class="nav-item">
-				<a href="index.php?option=com_login&amp;task=logout&amp;<?php echo JSession::getFormToken(); ?>=1&amp;return=<?php echo $logoutReturnUri; ?>" class="nav-link">
-					<div class="row text-center">
-						<span class="icon icon-cog"></span>
-					</div>
-					<div class="row">
-						<?php echo JText::_('LIB_REDCORE_ACCOUNT_LOGOUT'); ?>
-					</div>
-				</a>
-			</li>
-		</ul>
-	</div>
+			<?php if ($displayTopbarInnerLayout) : ?>
+				<?php echo RLayoutHelper::render($topbarInnerLayout, $topbarInnerLayoutData) ?>
+			<?php endif; ?>
+		</div>
+	<?php endif; ?>
+	<ul class="nav navbar-nav navbar-right navbar-inverse pull-xs-right">
+		<?php if ($displayBackToJoomla) : ?>
+		<li class="nav-item text-xs-center">
+			<a class="nav-link" href="<?php echo JRoute::_('index.php') ?>">
+				<i class="fa fa-joomla" data-toggle="tooltip" data-placement="bottom" title="Back to Joomla"></i>
+			</a>
+		</li>
+		<?php endif; ?>
+		<li class="nav-item text-xs-center">
+			<a href="index.php?option=com_admin&amp;task=profile.edit&amp;id=<?php echo $userId; ?>" class="nav-link">
+				<span class="fa fa-user" data-toggle="tooltip" data-placement="bottom" title="<?php echo $userName ?>"></span>
+			</a>
+		</li>
+		<li class="nav-item text-xs-center">
+			<a href="index.php?option=com_login&amp;task=logout&amp;<?php echo JSession::getFormToken(); ?>=1&amp;return=<?php echo $logoutReturnUri; ?>" class="nav-link">
+				<span class="fa fa-power-off" data-toggle="tooltip" data-placement="bottom" title="<?php echo JText::_('LIB_REDCORE_ACCOUNT_LOGOUT'); ?>"></span>
+			</a>
+		</li>
+	</ul>
 </nav>

@@ -75,6 +75,8 @@ abstract class RHtmlMedia
 			self::$frameworkOptions = array(
 				'disableMootools' => true,
 			);
+
+			RBootstrap::$disableAdminTemplateStuff = true;
 		}
 		elseif ($framework == 'foundation5')
 		{
@@ -126,7 +128,9 @@ abstract class RHtmlMedia
 			elseif (self::getFramework() == 'bootstrap4')
 			{
 				RHelperAsset::load('lib/bootstrap4/css/bootstrap.min.css', 'redcore');
+				RHelperAsset::load('component.bs4.min.css', 'redcore');
 				RHelperAsset::load('lib/fontawesome4/css/font-awesome.min.css', 'redcore');
+				RHelperAsset::load('lib/bootstrap4/css/tether.min.css', 'redcore');
 			}
 			elseif (self::getFramework() == 'foundation5')
 			{
@@ -164,6 +168,7 @@ abstract class RHtmlMedia
 			}
 			elseif (self::getFramework() == 'bootstrap4')
 			{
+				RHelperAsset::load('lib/bootstrap4/js/tether.min.js', 'redcore');
 				RHelperAsset::load('lib/bootstrap4/js/bootstrap.min.js', 'redcore');
 			}
 			elseif (self::getFramework() == 'foundation5')

@@ -63,6 +63,13 @@ class RBootstrap
 	public static $disableFrontendMootools = false;
 
 	/**
+	 * Defines if CSS and JS files of template should be loaded in Backend component/modules
+	 *
+	 * @var    bool
+	 */
+	public static $disableAdminTemplateStuff = false;
+
+	/**
 	 * Gets redCORE config param
 	 *
 	 * @param   string  $key      Config key

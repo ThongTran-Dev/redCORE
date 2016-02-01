@@ -324,6 +324,13 @@ class PlgSystemRedcore extends JPlugin
 				unset($doc->_scripts[JURI::root(true) . '/templates/' . $template . '/js/jui/bootstrap.js']);
 				unset($doc->_scripts[JURI::root(true) . '/templates/' . $template . '/js/jui/bootstrap.min.js']);
 			}
+
+			// Remove Bootstrap in administration, or if it's frontend site and it has been asked via plugin parameters
+			if ($isAdmin && RBootstrap::$disableAdminTemplateStuff)
+			{
+				unset($doc->_scripts[JURI::root(true) . '/administrator/templates/isis/js/template.js']);
+				unset($doc->_styleSheets[JURI::root(true) . '/administrator/templates/isis/css/template.css']);
+			}
 		}
 	}
 
