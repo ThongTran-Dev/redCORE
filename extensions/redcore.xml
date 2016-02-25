@@ -132,6 +132,11 @@
         <php>5.3.0</php>
     </requirements>
 
+    <!-- Update servers -->
+    <updateservers>
+        <server type="extension" priority="1" name="redCORE">https://github.com/redCOMPONENT-COM/redCORE/blob/develop/update_redcore.xml</server>
+    </updateservers>
+
     <!-- Postflight tasks -->
     <postflight>
     </postflight>
